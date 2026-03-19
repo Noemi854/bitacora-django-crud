@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<main class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center display-3 py-5">Eventos</h1>
+      <ul class="list-group">
+        {% for evento in lista_evento %}
+        <a class="list-group-item" href="{% url 'evento_detalle' evento.id %}">
+          <header class="d-flex justify-content-between">
+            <h1 class="fw-bold">{{ evento.get_local_afectado_display }} - {{ evento.get_tipo_evento_display }} - {{ evento.fecha_evento|date:"d/m/Y" }}</h1>
+            <p>{{ evento.creador.username }}</p>
+          </header>
+          <p>{{ evento.detalles_evento }}</p>
+        </a>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
