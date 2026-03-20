@@ -7,7 +7,7 @@ class eventoForm (forms.ModelForm):
     fecha_evento = DateField(
         label="Fecha del Evento",
         required=True,
-        widget=DateInput(format="%Y-%m-%d", attrs={"type": "date", "min": date.today().isoformat()}),
+        widget=DateInput(format="%Y-%m-%d", attrs={"type": "date", "min": date.today().isoformat(), "class": "form-control"}),
         input_formats=["%Y-%m-%d"]
     )
     
@@ -20,6 +20,14 @@ class eventoForm (forms.ModelForm):
     class Meta:
         model= eventos
         fields=['fecha_evento', 'local_afectado', 'tipo_evento', 'detalles_evento']
+        labels={
+            'fecha_evento': 'Fecha del Evento',
+            'local_afectado': 'Local Afectado',
+            'tipo_evento': 'Tipo de Evento',
+            'detalles_evento': 'Detalles del Evento',
+        }
         widgets={
+            'local_afectado': forms.Select(attrs={'class': 'form-control'}),
+            'tipo_evento': forms.Select(attrs={'class': 'form-control'}),
             'detalles_evento': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
