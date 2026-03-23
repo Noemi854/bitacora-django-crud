@@ -30,13 +30,17 @@
           {% endif %} 
           {% if is_admin or user == evento.creador %}
           <hr class="my-3">
-          <form action="{% url 'evento_delete' evento.id %}" method="POST">
-            {% csrf_token %}
-            <button class="btn btn-danger" type="submit">Eliminar Evento</button>
-          </form>
-          {% endif %}
+          <div class="d-flex gap-2">
+            <form action="{% url 'evento_delete' evento.id %}" method="POST">
+              {% csrf_token %}
+              <button class="btn btn-danger" type="submit">Eliminar Evento</button>
+            </form>
+            <a href="{% url 'eventos' %}" class="btn btn-secondary">Volver a Eventos</a>
+          </div>
+          {% else %}
           <hr class="my-3">
           <a href="{% url 'eventos' %}" class="btn btn-secondary">Volver a Eventos</a>
+          {% endif %}
         </div>
       </div>
     </div>
