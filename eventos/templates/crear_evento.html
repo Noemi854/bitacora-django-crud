@@ -7,7 +7,10 @@
         {{error}}
         <h1>Crear Evento</h1>
         {% csrf_token %} {{ form.as_p }}
-        <button class="btn btn-success" type="submit">Crear</button>
+        <div class="d-flex gap-2">
+          <button class="btn btn-success" type="submit">Crear</button>
+          <a href="{% url 'eventos' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
       </form>
     </div>
   </div>
